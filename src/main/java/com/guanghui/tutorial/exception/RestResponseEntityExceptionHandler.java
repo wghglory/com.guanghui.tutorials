@@ -1,6 +1,6 @@
 package com.guanghui.tutorial.exception;
 
-import com.guanghui.tutorial.entity.ErrorMessage;
+import com.guanghui.tutorial.model.ErrorMessage;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
