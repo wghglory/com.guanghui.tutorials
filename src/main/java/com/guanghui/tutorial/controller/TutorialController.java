@@ -1,7 +1,7 @@
 package com.guanghui.tutorial.controller;
 
+import com.guanghui.tutorial.entity.Tutorial;
 import com.guanghui.tutorial.exception.ResourceNotFoundException;
-import com.guanghui.tutorial.model.Tutorial;
 import com.guanghui.tutorial.repository.TutorialRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

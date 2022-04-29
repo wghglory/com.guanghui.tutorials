@@ -1,6 +1,6 @@
 package com.guanghui.tutorial.repository;
 
-import com.guanghui.tutorial.model.Tutorial;
+import com.guanghui.tutorial.entity.Tutorial;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
