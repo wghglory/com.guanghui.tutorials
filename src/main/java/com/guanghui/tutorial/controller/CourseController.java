@@ -6,10 +6,9 @@ import com.guanghui.tutorial.model.CoursePayload;
 import com.guanghui.tutorial.repository.CourseMaterialRepository;
 import com.guanghui.tutorial.repository.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/courses")
@@ -30,6 +29,11 @@ public class CourseController {
         CourseMaterial courseMaterial = CourseMaterial.builder().url(url).course(course).build();
 
         return courseMaterialRepository.save(courseMaterial);
+    }
+
+    @GetMapping()
+    public List<CourseMaterial> getAll() {
+        return courseMaterialRepository.findAll();
     }
 
 }

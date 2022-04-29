@@ -21,7 +21,7 @@ public class CourseMaterial {
     private String url;
 
     // cascade is important, need to save course to db first, so it stores course_id, and then save courseMaterial with foreign key
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "course_id", referencedColumnName = "courseId", nullable = false)
     private Course course;
 }
