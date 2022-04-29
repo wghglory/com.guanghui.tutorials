@@ -1,6 +1,5 @@
 package com.guanghui.tutorial.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -8,7 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+//@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})z
 @Entity(name = "courses")
 @Data
 @NoArgsConstructor
@@ -22,6 +21,10 @@ public class Course {
     private String title;
     private Integer credit;
 
-    @OneToOne(mappedBy = "course", optional = false)
+    @OneToOne(mappedBy = "course", optional = true)
     private CourseMaterial courseMaterial;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "teacher_id", referencedColumnName = "teacherId")
+    private Teacher teacher;
 }

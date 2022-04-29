@@ -23,8 +23,8 @@ public class CourseMaterial {
     private String url;
 
     // cascade is important, need to save course to db first, so it stores course_id, and then save courseMaterial with foreign key
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "course_id", referencedColumnName = "courseId", nullable = false)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "course_id", referencedColumnName = "courseId")
     // courseMaterial won't include course anymore. This makes FetchType not work. But it solves the circular json nested response issue when requesting courses.
     @JsonIgnore
     private Course course;

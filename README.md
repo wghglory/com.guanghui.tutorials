@@ -9,6 +9,7 @@ Relations:
 
 - Course to CourseMaterial 1:1, in course_materials table, there will be `course_id` as foreign key referencing courses
   table.
+- Teacher to Course: 1:N
 
 ## Issues
 
