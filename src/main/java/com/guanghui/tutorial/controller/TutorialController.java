@@ -20,13 +20,16 @@ public class TutorialController {
     TutorialRepository tutorialRepository;
 
     @GetMapping()
-    public ResponseEntity<List<Tutorial>> getAll(@RequestParam(required = false) String title) {
+    public ResponseEntity<List<Tutorial>> getAll(@RequestParam(required = false) String title, @RequestParam(required = false) String description) {
         try {
             List<Tutorial> tutorials = new ArrayList<Tutorial>();
-            if (title == null)
-                tutorials.addAll(tutorialRepository.findAll());
-            else
+            if (title != null)
                 tutorials.addAll(tutorialRepository.findByTitleContainingIgnoreCase(title));
+            else if (description != null)
+                tutorials.addAll(tutorialRepository.getByDescription(description));
+            else
+                tutorials.addAll(tutorialRepository.findAll());
+
             if (tutorials.isEmpty()) {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }
@@ -46,7 +49,7 @@ public class TutorialController {
 
         return tutorialDb.get();
     }
-
+    
     @PostMapping()
     public Tutorial createTutorial(@RequestBody Tutorial tutorial) {
         return tutorialRepository.save(new Tutorial(tutorial.getTitle(), tutorial.getDescription(), false));
