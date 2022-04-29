@@ -26,7 +26,8 @@ public class TutorialController {
             if (title != null)
                 tutorials.addAll(tutorialRepository.findByTitleContainingIgnoreCase(title));
             else if (description != null)
-                tutorials.addAll(tutorialRepository.getByDescription(description));
+                tutorials.addAll(tutorialRepository.getByDescriptionNativeParam(description));
+//                tutorials.addAll(tutorialRepository.getByDescription(description));
             else
                 tutorials.addAll(tutorialRepository.findAll());
 
@@ -49,7 +50,7 @@ public class TutorialController {
 
         return tutorialDb.get();
     }
-    
+
     @PostMapping()
     public Tutorial createTutorial(@RequestBody Tutorial tutorial) {
         return tutorialRepository.save(new Tutorial(tutorial.getTitle(), tutorial.getDescription(), false));
