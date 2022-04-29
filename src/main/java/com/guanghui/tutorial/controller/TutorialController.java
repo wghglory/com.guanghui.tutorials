@@ -22,7 +22,7 @@ public class TutorialController {
     @GetMapping()
     public ResponseEntity<List<Tutorial>> getAll(@RequestParam(required = false) String title, @RequestParam(required = false) String description) {
         try {
-            List<Tutorial> tutorials = new ArrayList<Tutorial>();
+            List<Tutorial> tutorials = new ArrayList<>();
             if (title != null)
                 tutorials.addAll(tutorialRepository.findByTitleContainingIgnoreCase(title));
             else if (description != null)
@@ -80,6 +80,15 @@ public class TutorialController {
 
             return tutorialRepository.save(t);
         }
+    }
+
+    @PatchMapping()
+    public ResponseEntity<Tutorial> updateTutorialDescriptionByName(@RequestBody Tutorial tutorial) {
+        if (tutorialRepository.updateDescriptionByTitle(tutorial.getTitle(), tutorial.getDescription()) > 0) {
+            // return the real entity
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     @DeleteMapping("{id}")
