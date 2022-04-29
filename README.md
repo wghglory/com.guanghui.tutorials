@@ -12,4 +12,6 @@ Relations:
 
 ## Issues
 
-How to fix course lazy fetch type?
+- How to fix course lazy fetch type?
+- Nested Json response solved by `JsonIgnore`, but requesting courseMaterials won't include course anymore, making the
+  FetchType not work.

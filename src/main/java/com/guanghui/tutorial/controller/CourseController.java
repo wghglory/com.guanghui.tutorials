@@ -32,7 +32,12 @@ public class CourseController {
     }
 
     @GetMapping()
-    public List<CourseMaterial> getAll() {
+    public List<Course> getAll() {
+        return courseRepository.findAll();
+    }
+
+    @GetMapping("/materials")
+    public List<CourseMaterial> getAllMaterials() {
         return courseMaterialRepository.findAll();
     }
 
